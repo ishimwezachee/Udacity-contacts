@@ -24,10 +24,20 @@ class App extends Component {
       }
      ]
   }
+  //Method That's Going to remove the the contact whose id is the one we pass in. 
+  removeContacts=(contact)=>{
+    this.setState((currentState)=>({
+      contacts:currentState.contacts.filter(c=> c.id !== contact.id)
+    }))
+  }
+
   render() {
     return (
       <div>
-        <ListContacts contacts = {this.state.contacts}/>
+        <ListContacts 
+        contacts = {this.state.contacts}
+        onDeleteContact= {this.removeContacts}
+        />
       </div>
     );
   }
